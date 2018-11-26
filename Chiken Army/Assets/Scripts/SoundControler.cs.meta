@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 383537b2f972009468e76863b5a34033
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _degatPlayer: {fileID: 8300000, guid: 42d3bfa9a1021b9439107c09f864244a, type: 3}
+  - _loupDeath: {fileID: 8300000, guid: ab4383958b664024b80c2eb91d83375f, type: 3}
+  - _build: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
