@@ -16,10 +16,10 @@ public class buildTower : MonoBehaviour {
 
     private void OnMouseOver()
     {
-        if(Input.GetMouseButtonDown(0) && GameController._me._money >= _cost)
+        if(Input.GetMouseButtonDown(0) && GameController._myGC._money >= _cost)
         {
-            GameController._me.AddMoney(-_cost);
-            Debug.Log(GameController._me._money);
+            GameController._myGC.AddMoney(-_cost);
+            Debug.Log(GameController._myGC._money);
             _currentTower = Instantiate(_newTower, _buildZone.transform.position, Quaternion.identity) as GameObject;
             _buildZone.SetActive(false);
         }
