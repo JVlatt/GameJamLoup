@@ -5,16 +5,38 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
-    public bool myTest;
-    public bool MyBool { get; set; }
+    
+    [SerializeField]
+    private GameObject _mainMenu;
+    [SerializeField]
+    private GameObject _optionMenu;
 
-	public void PlayButton()
+    private float _speed = 1.5f;
+
+    private Animator _myAnimator;
+
+    private void Start()
+    {
+        _myAnimator = gameObject.GetComponent<Animator>();
+    }
+
+    public void PlayButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void QuitButton()
     {
+        Application.Quit();
+    }
 
+    public void OptionButton()
+    {
+        _myAnimator.SetTrigger("option");
+    }
+
+    public void Backbutton()
+    {
+        _myAnimator.SetTrigger("main");
     }
 }
