@@ -4,13 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
-    public static GameController _me;
+    public static GameController _myGC;
     public Button _button;
     public GameObject _loup;
     public Image _lifeBar;
     public Transform _canvas;
-    public GameObject[] _road1;
-    public GameObject[] _road2;
+    public List<Transform> _roads = new List<Transform>();
     public Text _gold;
     public Text _life;
     public Text _waveIndic;
@@ -23,25 +22,39 @@ public class GameController : MonoBehaviour {
     private SoundControler _soundControler;
     private GameManager _manager;
     private float _timer;
-    private int _wave = 0;
-    private int _compte=0;
+    public int _curentWave { get; private set; } 
+    private int _currentEnemy = 0;
+    private int _compte = 100000;
 
-    public int _nbLoupW1;
-    public Vector2 _rangeW1;
+    //public int _nbLoupW1;
+    //public Vector2 _rangeW1;
 
-    public int _nbLoupW2;
-    public Vector2 _rangeW2;
+    //public int _nbLoupW2;
+    //public Vector2 _rangeW2;
 
-    public int _nbLoupW3;
-    public Vector2 _rangeW3;
+    //public int _nbLoupW3;
+    //public Vector2 _rangeW3;
 
+    public List<Wave> _waves = new List<Wave>();
+
+    public List<List<Transform>> _roadsTab = new List<List<Transform>>();
     private void Start()
     {
-        _me = this;
+        _myGC = this;
         AddMoney(0);
         Degat(0);
         _manager = GameManager._gameManager;
         _soundControler = SoundControler._soundControler;
+        _curentWave = -1;
+        _roads.Insert(0, new GameObject().transform);
+        int i = 0;
+        foreach (var road in _roads)
+        {
+            _roadsTab.Add(new List<Transform>());
+            road.GetComponentsInChildren<Transform>(_roadsTab[i]);
+            _roadsTab[i].Remove(road);
+            i++;
+        }
     }
 
     // Update is called once per frame
@@ -50,12 +63,42 @@ public class GameController : MonoBehaviour {
         {
             _timer -= Time.deltaTime;
         }
-        Spawn();
+        if(_curentWave>=0) Spawn();
 	}
 
     private void Spawn()
     {
-        switch (_wave) 
+        int _currentRoad;
+        if (_waves[_curentWave]._road == 0 || _waves[_curentWave]._road >= _roadsTab.Count)
+        {
+            _currentRoad = Random.Range(1, _roadsTab.Count);
+        }
+        else _currentRoad = _waves[_curentWave]._road;
+        if (_timer <= 0 && _compte < _waves[_curentWave]._enemys.Count)
+        {
+            _timer = Random.Range(_waves[_curentWave]._range.x, _waves[_curentWave]._range.y);
+            var loup = Instantiate(_waves[_curentWave]._enemys[_currentEnemy], _roadsTab[_currentRoad][0].transform.position, new Quaternion());
+            _waves[_curentWave]._enemys[_currentEnemy] = loup;
+            var lifeBar = Instantiate(_lifeBar, _canvas);
+            Enemy enemy = loup.GetComponent<Enemy>();
+            enemy.SetWaypoints(_roadsTab[_currentRoad]);
+            enemy._lifeBar = lifeBar;
+
+            _currentEnemy++;
+            _compte++;
+        }
+        if (_waves[_curentWave]._enemys.Count <= 0) {
+            if (_curentWave == _waves.Count-1)
+            {
+                _soundControler.PlaySound(_soundControler._victory);
+                _manager.Pause(true);
+                _win.SetActive(true);
+            }
+            _button.interactable = true;
+        }
+    
+
+        /*switch (_waveNum) 
         {
             case 1:
                 {
@@ -125,7 +168,7 @@ public class GameController : MonoBehaviour {
                     _win.SetActive(true);
                     break;
                 }
-        }
+        }*/
     }
 
     public void Degat(int amont)
@@ -143,10 +186,11 @@ public class GameController : MonoBehaviour {
 
     public void NextWave()
     {
-        _wave++;
+        _curentWave++;
+        _currentEnemy = 0;
         _compte = 0;
         _button.interactable = false;
-        _waveIndic.text = "Wave : " + _wave;
+        _waveIndic.text = "Wave : " + _curentWave;
     }
 
     public void Quit()
@@ -162,6 +206,6 @@ public class GameController : MonoBehaviour {
 
     private void OnDestroy()
     {
-        _me = null;
+        _myGC = null;
     }
 }

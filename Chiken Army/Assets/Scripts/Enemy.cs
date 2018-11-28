@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
 
-    private GameObject[] _waypoints;
+    private List<Transform> _waypoints;
     private int _waypointActuel =-1 ;
     private bool _changeWaypoint;
 
@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour {
     {
         _mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _myAnimator = GetComponentInChildren<Animator>();
-        _gameController = GameController._me;
+        _gameController = GameController._myGC;
         _camera = Camera.main;
     }
 
@@ -66,6 +66,7 @@ public class Enemy : MonoBehaviour {
         if (_hp <= 0)
         {
             SoundControler._soundControler.PlaySound(SoundControler._soundControler._loupDeath);
+            _gameController._waves[_gameController._curentWave]._enemys.Remove(this.gameObject);
             Destroy(gameObject);
             _gameController.AddMoney(_deathReward);
             Destroy(_lifeBar.gameObject);
@@ -79,13 +80,14 @@ public class Enemy : MonoBehaviour {
         _end = _waypoints[_waypointActuel + 1].transform.position;
         _trajet = _end - _start;
         if (_changeWaypoint) Animation();
-        if (_trajet.magnitude < 0.1 && _waypointActuel == _waypoints.Length - 2)
+        if (_trajet.magnitude < 0.1 && _waypointActuel == _waypoints.Count - 2)
         {
             _gameController.Degat(_degat);
+            _gameController._waves[_gameController._curentWave]._enemys.Remove(this.gameObject);
             Destroy(gameObject);
             Destroy(_lifeBar.gameObject);
         }
-        if (_trajet.magnitude < 0.1 && _waypointActuel != _waypoints.Length - 2)
+        if (_trajet.magnitude < 0.1 && _waypointActuel != _waypoints.Count - 2)
         {
             _waypointActuel += 1;
             _changeWaypoint = true;
@@ -109,7 +111,7 @@ public class Enemy : MonoBehaviour {
         _lifeBar.transform.Translate(_trajet * _speed * Time.deltaTime*100);
     }
 
-    public void SetWaypoints(GameObject[] _newWaypoints)
+    public void SetWaypoints(List<Transform> _newWaypoints)
     {
         _waypoints = _newWaypoints;
     }
