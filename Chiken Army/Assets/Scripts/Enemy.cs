@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour {
         if (_hp <= 0)
         {
             SoundControler._soundControler.PlaySound(SoundControler._soundControler._loupDeath);
-            _gameController._waves[_gameController._curentWave]._enemys.Remove(this.gameObject);
+            _gameController.RemoveLoup(gameObject);
             Destroy(gameObject);
             _gameController.AddMoney(_deathReward);
             Destroy(_lifeBar.gameObject);
@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour {
         if (_trajet.magnitude < 0.1 && _waypointActuel == _waypoints.Count - 2)
         {
             _gameController.Degat(_degat);
-            _gameController._waves[_gameController._curentWave]._enemys.Remove(this.gameObject);
+            _gameController.RemoveLoup(gameObject);
             Destroy(gameObject);
             Destroy(_lifeBar.gameObject);
         }

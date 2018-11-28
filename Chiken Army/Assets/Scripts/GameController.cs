@@ -22,19 +22,12 @@ public class GameController : MonoBehaviour {
     private SoundControler _soundControler;
     private GameManager _manager;
     private float _timer;
-    public int _curentWave { get; private set; } 
+    public int _curentWave { get; private set; }
     private int _currentEnemy = 0;
     private int _compte = 100000;
-    private int _nbLoups;
+    private List<GameObject> loupSpawn = new List<GameObject>(); 
 
-    //public int _nbLoupW1;
-    //public Vector2 _rangeW1;
 
-    //public int _nbLoupW2;
-    //public Vector2 _rangeW2;
-
-    //public int _nbLoupW3;
-    //public Vector2 _rangeW3;
 
     public List<Wave> _waves = new List<Wave>();
 
@@ -75,11 +68,11 @@ public class GameController : MonoBehaviour {
             _currentRoad = Random.Range(1, _roadsTab.Count);
         }
         else _currentRoad = _waves[_curentWave]._road;
-        if (_timer <= 0 && _compte < _nbLoups)
+        if (_timer <= 0 && _compte < _waves[_curentWave]._enemys.Count)
         {
             _timer = Random.Range(_waves[_curentWave]._range.x, _waves[_curentWave]._range.y);
             var loup = Instantiate(_waves[_curentWave]._enemys[_currentEnemy], _roadsTab[_currentRoad][0].transform.position, new Quaternion());
-            _waves[_curentWave]._enemys[_currentEnemy] = loup;
+            loupSpawn.Add(loup);
             var lifeBar = Instantiate(_lifeBar, _canvas);
             Enemy enemy = loup.GetComponent<Enemy>();
             enemy.SetWaypoints(_roadsTab[_currentRoad]);
@@ -88,7 +81,7 @@ public class GameController : MonoBehaviour {
             _currentEnemy++;
             _compte++;
         }
-        if (_nbLoups <= 0) {
+        if (loupSpawn.Count <= 0 && _compte <= _waves[_curentWave]._enemys.Count) {
             if (_curentWave == _waves.Count-1)
             {
                 _soundControler.PlaySound(_soundControler._victory);
@@ -97,79 +90,7 @@ public class GameController : MonoBehaviour {
             }
             _button.interactable = true;
         }
-    
-
-        /*switch (_waveNum) 
-        {
-            case 1:
-                {
-                    if (_timer <= 0 && _compte < _nbLoupW1)
-                    {
-                        _timer = Random.Range(_rangeW1.x, _rangeW1.y);
-                        var loup = Instantiate(_loup, _road1[0].transform.position, new Quaternion());
-                        var lifeBar = Instantiate(_lifeBar,_canvas);
-                        Enemy enemy = loup.GetComponent<Enemy>();
-                        enemy.SetWaypoints(_road1);
-                        enemy._lifeBar = lifeBar;
-
-                        _compte++;
-                    }
-                    if (_compte >= _nbLoupW1) _button.interactable = true;
-                    break;
-                }
-            case 2:
-                {
-                    if (_timer <= 0 && _compte < _nbLoupW2)
-                    {
-                        _timer = Random.Range(_rangeW2.x, _rangeW2.y);
-                        var loup = Instantiate(_loup, _road2[0].transform.position, new Quaternion());
-                        var lifeBar = Instantiate(_lifeBar, _canvas);
-                        Enemy enemy = loup.GetComponent<Enemy>();
-                        enemy.SetWaypoints(_road2);
-                        enemy._lifeBar = lifeBar;
-                        _compte++;
-                    }
-                    if (_compte >= _nbLoupW2) _button.interactable = true;
-                    break;
-                }
-            case 3:
-                {
-                    if (_timer <= 0 && _compte < _nbLoupW2)
-                    {
-                        int road = Random.Range(1, 3);
-                        if (road == 1)
-                        {
-                            _timer = Random.Range(_rangeW3.x, _rangeW3.y);
-                            var loup = Instantiate(_loup, _road1[0].transform.position, new Quaternion());
-                            var lifeBar = Instantiate(_lifeBar, _canvas);
-                            Enemy enemy = loup.GetComponent<Enemy>();
-                            enemy.SetWaypoints(_road1);
-                            enemy._lifeBar = lifeBar;
-
-                            _compte++;
-                        }
-                        else
-                        {
-                            _timer = Random.Range(_rangeW3.x, _rangeW3.y);
-                            var loup = Instantiate(_loup, _road2[0].transform.position, new Quaternion());
-                            var lifeBar = Instantiate(_lifeBar, _canvas);
-                            Enemy enemy = loup.GetComponent<Enemy>();
-                            enemy.SetWaypoints(_road2);
-                            enemy._lifeBar = lifeBar;
-                            _compte++;
-                        }
-                    }
-                    if (_compte >= _nbLoupW2) _button.interactable = true;
-                    break;
-                }
-            case 4:
-                {
-                    _soundControler.PlaySound(_soundControler._victory);
-                    _manager.Pause(true);
-                    _win.SetActive(true);
-                    break;
-                }
-        }*/
+   
     }
 
     public void Degat(int amont)
@@ -191,8 +112,7 @@ public class GameController : MonoBehaviour {
         _currentEnemy = 0;
         _compte = 0;
         _button.interactable = false;
-        _waveIndic.text = "Wave : " + _curentWave;
-        _nbLoups = _waves[_curentWave]._enemys.Count;
+        _waveIndic.text = "Wave : " + (_curentWave + 1).ToString();
     }
 
     public void Quit()
@@ -209,5 +129,10 @@ public class GameController : MonoBehaviour {
     private void OnDestroy()
     {
         _myGC = null;
+    }
+
+    public void RemoveLoup(GameObject loup)
+    {
+        loupSpawn.Remove(loup);
     }
 }
