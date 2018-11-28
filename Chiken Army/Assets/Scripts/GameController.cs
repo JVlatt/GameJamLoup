@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour {
             _currentRoad = Random.Range(1, _roadsTab.Count);
         }
         else _currentRoad = _waves[_curentWave]._road;
-        if (_timer <= 0 && _compte < _nbLoups)
+        if (_timer <= 0 && _compte <= _nbLoups-1)
         {
             _timer = Random.Range(_waves[_curentWave]._range.x, _waves[_curentWave]._range.y);
             var loup = Instantiate(_waves[_curentWave]._enemys[_currentEnemy], _roadsTab[_currentRoad][0].transform.position, new Quaternion());
@@ -88,7 +88,7 @@ public class GameController : MonoBehaviour {
             _currentEnemy++;
             _compte++;
         }
-        if (_nbLoups <= 0) {
+        if (_waves[_curentWave]._enemys.Count <= 0) {
             if (_curentWave == _waves.Count-1)
             {
                 _soundControler.PlaySound(_soundControler._victory);
