@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a9247f18a7fb946805d0c3f134ff03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _degat: 5
+  _degat: 4
   _cooldown: 1
 --- !u!114 &114365485507206450
 MonoBehaviour:
