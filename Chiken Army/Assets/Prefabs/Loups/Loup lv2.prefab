@@ -150,7 +150,7 @@ MonoBehaviour:
   _speed: 1
   _degat: 1
   _deathReward: 15
-  _lifeBar: {fileID: 114157032871177278, guid: d12ea514bac35104aad1bf38aa7c10b2, type: 2}
+  _lifeBar: {fileID: 0}
   _hp: 10
 --- !u!212 &212892992903439704
 SpriteRenderer:

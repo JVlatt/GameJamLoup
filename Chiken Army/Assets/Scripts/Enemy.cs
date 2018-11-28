@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour {
     // Use this for initialization
     void Start () {
         _hpMax = _hp;
-        _lifeBar.transform.localPosition = new Vector2(transform.position.x, transform.position.y + 0.5f) * 100;
+        _lifeBar.transform.localPosition = new Vector2(transform.position.x, transform.position.y + 0.5f) * 110;
     }
 	
 	// Update is called once per frame
@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour {
 
     private void LifeBarPosition()
     {
-        _lifeBar.transform.Translate(_trajet * _speed * Time.deltaTime*100);
+        _lifeBar.transform.Translate(_trajet * _speed * Time.deltaTime*110);
     }
 
     public void SetWaypoints(List<Transform> _newWaypoints)
