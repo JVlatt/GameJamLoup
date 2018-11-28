@@ -793,8 +793,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c89b0caffc26b64eb9ac0ba37f3011d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemys: []
-  _range: {x: 0, y: 0}
+  _enemys:
+  - {fileID: 1917746833714502, guid: fd7c4b2757dbd5b4795ac98e5b9e2a58, type: 2}
+  - {fileID: 1917746833714502, guid: fd7c4b2757dbd5b4795ac98e5b9e2a58, type: 2}
+  _range: {x: 1, y: 1}
   _road: 1
 --- !u!114 &352975752
 MonoBehaviour:

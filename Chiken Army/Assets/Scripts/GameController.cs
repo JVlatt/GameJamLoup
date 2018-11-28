@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour {
     public int _curentWave { get; private set; } 
     private int _currentEnemy = 0;
     private int _compte = 100000;
+    private int _nbLoups;
 
     //public int _nbLoupW1;
     //public Vector2 _rangeW1;
@@ -74,7 +75,7 @@ public class GameController : MonoBehaviour {
             _currentRoad = Random.Range(1, _roadsTab.Count);
         }
         else _currentRoad = _waves[_curentWave]._road;
-        if (_timer <= 0 && _compte < _waves[_curentWave]._enemys.Count)
+        if (_timer <= 0 && _compte < _nbLoups)
         {
             _timer = Random.Range(_waves[_curentWave]._range.x, _waves[_curentWave]._range.y);
             var loup = Instantiate(_waves[_curentWave]._enemys[_currentEnemy], _roadsTab[_currentRoad][0].transform.position, new Quaternion());
@@ -87,7 +88,7 @@ public class GameController : MonoBehaviour {
             _currentEnemy++;
             _compte++;
         }
-        if (_waves[_curentWave]._enemys.Count <= 0) {
+        if (_nbLoups <= 0) {
             if (_curentWave == _waves.Count-1)
             {
                 _soundControler.PlaySound(_soundControler._victory);
@@ -191,6 +192,7 @@ public class GameController : MonoBehaviour {
         _compte = 0;
         _button.interactable = false;
         _waveIndic.text = "Wave : " + _curentWave;
+        _nbLoups = _waves[_curentWave]._enemys.Count;
     }
 
     public void Quit()
