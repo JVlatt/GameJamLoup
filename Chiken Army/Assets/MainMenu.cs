@@ -22,7 +22,9 @@ public class MainMenu : MonoBehaviour {
 
     public void PlayButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SoundControler._soundControler.PlaySound(SoundControler._soundControler._click);
+        StartCoroutine("Wait");
+        
     }
 
     public void QuitButton()
@@ -33,10 +35,17 @@ public class MainMenu : MonoBehaviour {
     public void OptionButton()
     {
         _myAnimator.SetTrigger("option");
+        SoundControler._soundControler.PlaySound(SoundControler._soundControler._transi1);
     }
 
     public void Backbutton()
     {
         _myAnimator.SetTrigger("main");
+        SoundControler._soundControler.PlaySound(SoundControler._soundControler._transi2);
+    }
+    IEnumerator Wait()
+    {      
+        yield return new WaitForSecondsRealtime(2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

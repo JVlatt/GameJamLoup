@@ -8,6 +8,9 @@ public class SoundControler : MonoBehaviour {
     public AudioClip _gameOver;
     public AudioClip _victory;
     public AudioClip _tire;
+    public AudioClip _transi1;
+    public AudioClip _transi2;
+    public AudioClip _click;
     public static SoundControler _soundControler;
 
     private AudioSource _source;
