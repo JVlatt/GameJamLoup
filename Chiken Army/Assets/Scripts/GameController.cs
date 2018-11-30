@@ -8,7 +8,6 @@ public class GameController : MonoBehaviour {
 
     public Button _button;
     public Image _lifeBar;
-    public int _LifeBarRapprt;
     public Transform _canvas;
     public List<Transform> _roads = new List<Transform>();
     public Text _gold;
@@ -78,7 +77,7 @@ public class GameController : MonoBehaviour {
             _loupSpawn.Add(loup);
             var lifeBar = Instantiate(_lifeBar, _canvas);
             Enemy enemy = loup.GetComponent<Enemy>();
-            enemy.SetupEnemy(_roadsTab[_currentRoad],lifeBar,_LifeBarRapprt);
+            enemy.SetupEnemy(_roadsTab[_currentRoad],lifeBar);
 
             _currentEnemy++;
             _compte++;

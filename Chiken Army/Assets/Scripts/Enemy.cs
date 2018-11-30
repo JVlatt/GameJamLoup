@@ -15,7 +15,6 @@ public class Enemy : MonoBehaviour {
     public GameObject LoupMort;
 
     private Image _lifeBar;
-    private int _lifeBarRapport;
     private Vector2 _start;
     private Vector2 _end;
     private Vector2 _trajet;
@@ -116,10 +115,9 @@ public class Enemy : MonoBehaviour {
         _lifeBar.transform.position = _camera.WorldToScreenPoint(transform.position + _offset);
     }
 
-    public void SetupEnemy(List<Transform> _newWaypoints,Image _newLifeBar,int _newLifeBarRapport)
+    public void SetupEnemy(List<Transform> _newWaypoints,Image _newLifeBar)
     {
         _waypoints = _newWaypoints;
         _lifeBar = _newLifeBar;
-        _lifeBarRapport = _newLifeBarRapport;
     }
 }
