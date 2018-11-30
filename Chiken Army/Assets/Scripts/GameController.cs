@@ -88,6 +88,7 @@ public class GameController : MonoBehaviour {
                 _soundControler.PlaySound(_soundControler._victory);
                 _manager.Pause(true);
                 _win.SetActive(true);
+                Destroy(this);
             }
             _button.interactable = true;
         }
