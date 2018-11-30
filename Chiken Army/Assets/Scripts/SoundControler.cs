@@ -13,14 +13,23 @@ public class SoundControler : MonoBehaviour {
     public AudioClip _click;
     public AudioClip _jobdone;
     public AudioClip _hit;
+    public AudioClip _music;
     public static SoundControler _soundControler;
 
     private AudioSource _source;
 
     private void Awake()
     {
-        _soundControler = this;
-        _source = GetComponentInParent<AudioSource>();
+        if (_soundControler == null)
+            _soundControler = this;
+        else
+            Destroy(this);
+
+        _source = GetComponent<AudioSource>();
+        
+        _source.clip = _music;
+        _source.loop = true;
+        _source.Play();
     }
 
     public void PlaySound(AudioClip sound)

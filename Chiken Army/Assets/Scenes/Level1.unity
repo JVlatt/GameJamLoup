@@ -5279,6 +5279,7 @@ GameObject:
   - component: {fileID: 860304432}
   - component: {fileID: 860304431}
   - component: {fileID: 860304434}
+  - component: {fileID: 860304435}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5340,7 +5341,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 860304430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 352975744}
@@ -5442,6 +5443,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &860304435
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 860304430}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e8afb11444a90e442974eedfb35fbbcd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &861231743
 Prefab:
   m_ObjectHideFlags: 0
@@ -5591,7 +5610,7 @@ Prefab:
       objectReference: {fileID: 352975749}
     - target: {fileID: 1737731001070734, guid: 0c3c66c7ec7fb984ba4ac339213653e0, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c3c66c7ec7fb984ba4ac339213653e0, type: 2}
@@ -6877,7 +6896,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4121447333330640, guid: 0f624a7c8c6e26c4cb9645c1a256292a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.3779297
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4121447333330640, guid: 0f624a7c8c6e26c4cb9645c1a256292a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -26149,6 +26168,36 @@ Prefab:
         type: 2}
       propertyPath: _LifeBarRapprt
       value: 107
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361645867173750, guid: d13e5876f2e1fc6408076802194ddd43,
+        type: 2}
+      propertyPath: _jobdone
+      value: 
+      objectReference: {fileID: 8300000, guid: 1c3f9d28a8522da4489c7b49b6206ef8, type: 3}
+    - target: {fileID: 114361645867173750, guid: d13e5876f2e1fc6408076802194ddd43,
+        type: 2}
+      propertyPath: _hit
+      value: 
+      objectReference: {fileID: 8300000, guid: b19a29de8e8c66c46abe10f2eb2b3aa5, type: 3}
+    - target: {fileID: 114361645867173750, guid: d13e5876f2e1fc6408076802194ddd43,
+        type: 2}
+      propertyPath: _gameOver
+      value: 
+      objectReference: {fileID: 8300000, guid: 7f5c757ae32afb240b3ddbadd3dded61, type: 3}
+    - target: {fileID: 114361645867173750, guid: d13e5876f2e1fc6408076802194ddd43,
+        type: 2}
+      propertyPath: _victory
+      value: 
+      objectReference: {fileID: 8300000, guid: 7dcd53612ae82284197183ee84a35f8b, type: 3}
+    - target: {fileID: 114361645867173750, guid: d13e5876f2e1fc6408076802194ddd43,
+        type: 2}
+      propertyPath: _loupDeath
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361645867173750, guid: d13e5876f2e1fc6408076802194ddd43,
+        type: 2}
+      propertyPath: _tire
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13e5876f2e1fc6408076802194ddd43, type: 2}

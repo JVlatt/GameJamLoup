@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
 
-    
+    public GameObject _myAudio;
     [SerializeField]
     private GameObject _mainMenu;
     [SerializeField]
@@ -58,6 +58,7 @@ public class MainMenu : MonoBehaviour {
 
     public void PlayButton()
     {
+        DontDestroyOnLoad(_myAudio);
         SoundControler._soundControler.PlaySound(SoundControler._soundControler._click);
         StartCoroutine("Wait");
         
