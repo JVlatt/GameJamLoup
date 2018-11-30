@@ -18,9 +18,11 @@ public class buildTower : MonoBehaviour {
     {
         if(Input.GetMouseButtonDown(0) && GameController._myGC._money >= _cost)
         {
-            GameController._myGC.AddMoney(-_cost);
-            Debug.Log(GameController._myGC._money);
+            GameController._myGC.AddMoney(-_cost);            
             _currentTower = Instantiate(_newTower, _buildZone.transform.position, Quaternion.identity) as GameObject;
+            GameObject particles = Instantiate(Resources.Load("build", typeof(GameObject)), _buildZone.transform.position, Quaternion.identity, _currentTower.transform) as GameObject;
+            Destroy(particles, 20);
+            SoundControler._soundControler.PlaySound(SoundControler._soundControler._jobdone);
             _buildZone.SetActive(false);
         }
     }
