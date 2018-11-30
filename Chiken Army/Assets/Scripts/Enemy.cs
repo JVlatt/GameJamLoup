@@ -68,11 +68,11 @@ public class Enemy : MonoBehaviour {
         if (_hp <= 0)
         {
             SoundControler._soundControler.PlaySound(SoundControler._soundControler._loupDeath);
-            _gameController.RemoveLoup(gameObject);
+            if(_gameController != null)_gameController.RemoveLoup(gameObject);
             Destroy(gameObject);
-            var mort = Instantiate(LoupMort,transform.position,new Quaternion());
+            var mort = Instantiate(LoupMort,transform.position,_mySpriteRenderer.transform.rotation);
             Destroy(mort, 1);
-            _gameController.AddMoney(_deathReward);
+            if (_gameController != null) _gameController.AddMoney(_deathReward);
             Destroy(_lifeBar.gameObject);
         }
         _lifeBar.fillAmount = (_hp / _hpMax);
@@ -86,8 +86,11 @@ public class Enemy : MonoBehaviour {
         if (_changeWaypoint) Animation();
         if (_trajet.magnitude < 0.1 && _waypointActuel == _waypoints.Count - 2)
         {
-            _gameController.Degat(_degat);
-            _gameController.RemoveLoup(gameObject);
+            if (_gameController != null)
+            {
+                _gameController.Degat(_degat);
+                _gameController.RemoveLoup(gameObject);
+            }
             Destroy(gameObject);
             Destroy(_lifeBar.gameObject);
         }
