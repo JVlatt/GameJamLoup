@@ -25,8 +25,7 @@ public class GameController : MonoBehaviour {
     public int _curentWave { get; private set; }
     private int _currentEnemy = 0;
     private int _compte = 100000;
-    private List<GameObject> loupSpawn = new List<GameObject>(); 
-
+    private List<GameObject> loupSpawn = new List<GameObject>();
 
 
     public List<Wave> _waves = new List<Wave>();

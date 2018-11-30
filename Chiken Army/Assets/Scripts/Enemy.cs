@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour {
     private Animator _myAnimator;
     private GameController _gameController;
     private Camera _camera;
+    public Vector3 _offset;
 
     private float _difXY;
 
@@ -39,6 +40,7 @@ public class Enemy : MonoBehaviour {
     // Use this for initialization
     void Start () {
         _hpMax = _hp;
+        _offset = new Vector3(0, 0.5f);
         _lifeBar.transform.localPosition = new Vector2(transform.position.x, transform.position.y + 0.5f) * 110;
     }
 	
@@ -108,7 +110,9 @@ public class Enemy : MonoBehaviour {
 
     private void LifeBarPosition()
     {
-        _lifeBar.transform.Translate(_trajet * _speed * Time.deltaTime*110);
+        //_lifeBar.transform.Translate(_trajet * _speed * Time.deltaTime*110);
+        _lifeBar.transform.position = _camera.WorldToScreenPoint(transform.position + _offset);
+
     }
 
     public void SetWaypoints(List<Transform> _newWaypoints)
