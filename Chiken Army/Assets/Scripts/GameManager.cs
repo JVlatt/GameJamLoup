@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager _gameManager;
 
-    private void Start()
+    private void Awake()
     {
         _gameManager = this;
     }

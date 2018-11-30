@@ -2544,6 +2544,7 @@ MonoBehaviour:
   _button: {fileID: 2034267988}
   _loup: {fileID: 1917746833714502, guid: fd7c4b2757dbd5b4795ac98e5b9e2a58, type: 2}
   _lifeBar: {fileID: 114157032871177278, guid: d12ea514bac35104aad1bf38aa7c10b2, type: 2}
+  _LifeBarRapprt: 100
   _canvas: {fileID: 1278250215}
   _roads:
   - {fileID: 490721612}

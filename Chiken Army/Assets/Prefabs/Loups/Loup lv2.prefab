@@ -150,7 +150,7 @@ MonoBehaviour:
   _speed: 1
   _degat: 1
   _deathReward: 15
-  _lifeBar: {fileID: 0}
+  LoupMort: {fileID: 1804865012023528, guid: e816229952f4322489beb71e474c89cc, type: 2}
   _hp: 10
 --- !u!212 &212892992903439704
 SpriteRenderer:
@@ -187,7 +187,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300016, guid: f9aa229c58b0da744bc366dfdb4fa99e, type: 3}
   m_Color: {r: 0.9339623, g: 0.2863564, b: 0.2863564, a: 1}
   m_FlipX: 0
   m_FlipY: 0

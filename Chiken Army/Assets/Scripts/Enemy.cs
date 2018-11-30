@@ -12,8 +12,10 @@ public class Enemy : MonoBehaviour {
     public float _speed;
     public int _degat = 1;
     public int _deathReward = 10;
-    public Image _lifeBar;
+    public GameObject LoupMort;
 
+    private Image _lifeBar;
+    private int _lifeBarRapport;
     private Vector2 _start;
     private Vector2 _end;
     private Vector2 _trajet;
@@ -41,7 +43,6 @@ public class Enemy : MonoBehaviour {
     void Start () {
         _hpMax = _hp;
         _offset = new Vector3(0, 0.5f);
-        _lifeBar.transform.localPosition = new Vector2(transform.position.x, transform.position.y + 0.5f) * 110;
     }
 	
 	// Update is called once per frame
@@ -70,6 +71,8 @@ public class Enemy : MonoBehaviour {
             SoundControler._soundControler.PlaySound(SoundControler._soundControler._loupDeath);
             _gameController.RemoveLoup(gameObject);
             Destroy(gameObject);
+            var mort = Instantiate(LoupMort,transform.position,new Quaternion());
+            Destroy(mort, 1);
             _gameController.AddMoney(_deathReward);
             Destroy(_lifeBar.gameObject);
         }
@@ -110,13 +113,13 @@ public class Enemy : MonoBehaviour {
 
     private void LifeBarPosition()
     {
-        //_lifeBar.transform.Translate(_trajet * _speed * Time.deltaTime*110);
         _lifeBar.transform.position = _camera.WorldToScreenPoint(transform.position + _offset);
-
     }
 
-    public void SetWaypoints(List<Transform> _newWaypoints)
+    public void SetupEnemy(List<Transform> _newWaypoints,Image _newLifeBar,int _newLifeBarRapport)
     {
         _waypoints = _newWaypoints;
+        _lifeBar = _newLifeBar;
+        _lifeBarRapport = _newLifeBarRapport;
     }
 }

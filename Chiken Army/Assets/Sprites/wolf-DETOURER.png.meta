@@ -15,6 +15,10 @@ TextureImporter:
     21300020: wolf-DETOURER_10
     21300022: wolf-DETOURER_11
     21300024: wolf-DETOURER_12
+    21300026: wolf-DETOURER_13
+    21300028: wolf-DETOURER_14
+    21300030: wolf-DETOURER_15
+    21300032: wolf-DETOURER_16
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -352,6 +356,86 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 0b88d33c6dec42048963ebbbec26a2af
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf-DETOURER_13
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 352
+        width: 63
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d749682066a8b47499c878dce7246c6d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf-DETOURER_14
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 352
+        width: 64
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 281389164f48d754ebb68d42baf1c3bb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf-DETOURER_15
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 352
+        width: 61
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3605cbe22557054082070d3549eeb41
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf-DETOURER_16
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 352
+        width: 60
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b46aa9c35ebf5ec4ea13034b74b5f6da
       vertices: []
       indices: 
       edges: []

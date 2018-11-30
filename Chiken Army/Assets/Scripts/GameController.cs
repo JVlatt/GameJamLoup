@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
     public static GameController _myGC;
+
     public Button _button;
-    public GameObject _loup;
     public Image _lifeBar;
+    public int _LifeBarRapprt;
     public Transform _canvas;
     public List<Transform> _roads = new List<Transform>();
     public Text _gold;
@@ -21,23 +22,26 @@ public class GameController : MonoBehaviour {
 
     private SoundControler _soundControler;
     private GameManager _manager;
+    private Animator _animCamera;
+
     private float _timer;
     public int _curentWave { get; private set; }
     private int _currentEnemy = 0;
     private int _compte = 100000;
-    private List<GameObject> loupSpawn = new List<GameObject>();
+    private List<GameObject> _loupSpawn = new List<GameObject>(); 
 
 
     public List<Wave> _waves = new List<Wave>();
 
     public List<List<Transform>> _roadsTab = new List<List<Transform>>();
-    private void Start()
+    private void Awake()
     {
         _myGC = this;
-        AddMoney(0);
-        Degat(0);
         _manager = GameManager._gameManager;
         _soundControler = SoundControler._soundControler;
+        _animCamera = GetComponentInParent<Animator>();
+        AddMoney(0);
+        _life.text = _hpPlayer.ToString();
         _curentWave = -1;
         _roads.Insert(0, new GameObject().transform);
         int i = 0;
@@ -71,16 +75,15 @@ public class GameController : MonoBehaviour {
         {
             _timer = Random.Range(_waves[_curentWave]._range.x, _waves[_curentWave]._range.y);
             var loup = Instantiate(_waves[_curentWave]._enemys[_currentEnemy], _roadsTab[_currentRoad][0].transform.position, new Quaternion());
-            loupSpawn.Add(loup);
+            _loupSpawn.Add(loup);
             var lifeBar = Instantiate(_lifeBar, _canvas);
             Enemy enemy = loup.GetComponent<Enemy>();
-            enemy.SetWaypoints(_roadsTab[_currentRoad]);
-            enemy._lifeBar = lifeBar;
+            enemy.SetupEnemy(_roadsTab[_currentRoad],lifeBar,_LifeBarRapprt);
 
             _currentEnemy++;
             _compte++;
         }
-        if (loupSpawn.Count <= 0 && _compte <= _waves[_curentWave]._enemys.Count) {
+        if (_loupSpawn.Count <= 0 && _compte <= _waves[_curentWave]._enemys.Count) {
             if (_curentWave == _waves.Count-1)
             {
                 _soundControler.PlaySound(_soundControler._victory);
@@ -96,6 +99,7 @@ public class GameController : MonoBehaviour {
     {
         _hpPlayer -= amont;
         _life.text = _hpPlayer.ToString();
+        _animCamera.SetTrigger("Shake");
         if(_hpPlayer <= 0)
         {
             _soundControler.PlaySound(_soundControler._gameOver);
@@ -132,6 +136,6 @@ public class GameController : MonoBehaviour {
 
     public void RemoveLoup(GameObject loup)
     {
-        loupSpawn.Remove(loup);
+        _loupSpawn.Remove(loup);
     }
 }
