@@ -64,7 +64,10 @@ public class Enemy : MonoBehaviour {
     public void LifeController(int degat)
     {
         if (_hp > 0)
+        { 
             _hp -= degat;
+            SoundControler._soundControler.PlaySound(SoundControler._soundControler._hit);
+        }
         if (_hp <= 0)
         {
             SoundControler._soundControler.PlaySound(SoundControler._soundControler._loupDeath);

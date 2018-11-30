@@ -12,6 +12,7 @@ public class SoundControler : MonoBehaviour {
     public AudioClip _transi2;
     public AudioClip _click;
     public AudioClip _jobdone;
+    public AudioClip _hit;
     public static SoundControler _soundControler;
 
     private AudioSource _source;
