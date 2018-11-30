@@ -5589,6 +5589,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 352975749}
+    - target: {fileID: 1737731001070734, guid: 0c3c66c7ec7fb984ba4ac339213653e0, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c3c66c7ec7fb984ba4ac339213653e0, type: 2}
   m_IsPrefabAsset: 0
@@ -26106,7 +26110,7 @@ Prefab:
     - target: {fileID: 114448965210993526, guid: d13e5876f2e1fc6408076802194ddd43,
         type: 2}
       propertyPath: _money
-      value: 100
+      value: 195
       objectReference: {fileID: 0}
     - target: {fileID: 114953693677223402, guid: d13e5876f2e1fc6408076802194ddd43,
         type: 2}

@@ -1841,8 +1841,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Pause
+      - m_Target: {fileID: 1740237304722138}
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1852,8 +1852,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1740237304722138}
-        m_MethodName: SetActive
+      - m_Target: {fileID: 0}
+        m_MethodName: Pause
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2416,7 +2416,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1.0000397}
   m_Children: []
   m_Father: {fileID: 224267762199013050}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2598,8 +2598,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -199.99997}
   m_LocalScale: {x: 1.0001036, y: 1.0001036, z: 1.0001036}
   m_Children:
-  - {fileID: 224075304432913236}
   - {fileID: 224771686182807694}
+  - {fileID: 224075304432913236}
   - {fileID: 224251926184684672}
   m_Father: {fileID: 224198485578299524}
   m_RootOrder: 5
@@ -2892,7 +2892,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224267762199013050}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
